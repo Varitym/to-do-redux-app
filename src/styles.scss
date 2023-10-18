@@ -1,11 +1,62 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .task {
+  width: 90%;
+  height: 5vh;
+  padding-left: 0.2em;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  border-bottom: 1px solid gray;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
   li {
+    list-style: none;
+    color: inherit;
+    text-decoration: line-through rgba(255, 255, 255, 0);
+    transition: color 1s, text-decoration-color 0.5s;
     &.done {
-      color: red;
-      text-decoration: line-through;
+      text-decoration-color: black;
     }
     &.todo {
-      color: green;
+      text-decoration-color: transparent;
     }
   }
+}
+.checkbox {
+  width: 25px;
+  height: 25px;
+  margin-right: 1em;
+}
+.App {
+  @include flex-center();
+  text-align: center;
+  height: 100vh;
+}
+
+.App-header {
+  @include flex-center();
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.Main-container {
+  align-self: center;
+  background-color: #eef1f2;
+  height: 80vh;
+  width: 90vw;
+  border-radius: 20px;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+}
+.delete {
+  margin-left: 10px;
 }

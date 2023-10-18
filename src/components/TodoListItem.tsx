@@ -46,9 +46,9 @@ export const TodoListItem = ({ task }: Props) => {
   };
 
   return (
-    <div className={"task"}>
+    <div>
       {isEditing ? (
-        <div>
+        <div className="task">
           <form onSubmit={(e) => handleEdit(task.id, e)}>
             <input
               type="text"
@@ -60,8 +60,15 @@ export const TodoListItem = ({ task }: Props) => {
         </div>
       ) : (
         <div className="task">
+          <input
+            className="checkbox"
+            type="checkbox"
+            onChange={() => {
+              handleCheckbox();
+            }}
+            value={task.status === "done" ? "checked" : ""}
+          ></input>
           <li className={task.status}>{task.task}</li>
-          <div className="status">{task.status}</div>
           <div
             className="delete"
             onClick={() => {
@@ -71,13 +78,7 @@ export const TodoListItem = ({ task }: Props) => {
           >
             Edit
           </div>
-          <input
-            type="checkbox"
-            onChange={() => {
-              handleCheckbox();
-            }}
-            value={task.status === "done" ? "checked" : ""}
-          ></input>
+
           <div className="delete" onClick={() => handleDelete(task.id)}>
             X
           </div>

@@ -1,4 +1,3 @@
-import "./App.css";
 import "./styles.scss";
 import { AddTask } from "./components/AddTask";
 import { TodoList } from "./components/TodoList";
