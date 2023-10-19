@@ -2,14 +2,16 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../redux/slices/todoListSlice";
 import { Todo } from "../types/Todo";
+import { Button } from "./Button";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { TextInput } from "./TextInput";
 
 export const AddTask = () => {
   const [task, setTask] = useState("");
   const dispatch = useDispatch();
   const todoList = useSelector((state: Todo) => state.todo);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = () => {
     dispatch(
       addTodo({
         task: task,
@@ -25,9 +27,15 @@ export const AddTask = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" value={task} onChange={handleChange} />
-      <button type="submit">Add</button>
-    </form>
+    <div className="row">
+      <TextInput value={task} onChange={handleChange} />
+      <Button
+        text="Add"
+        color={"gray"}
+        isDisabled={task.length < 1}
+        icon={<AiOutlinePlusCircle />}
+        onClick={onSubmit}
+      />
+    </div>
   );
 };

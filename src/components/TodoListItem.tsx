@@ -2,12 +2,17 @@ import { useDispatch } from "react-redux";
 import { Task } from "../types/Task";
 import { removeTodo, updateTodo } from "../redux/slices/todoListSlice";
 import { useState } from "react";
+import { Button } from "./Button";
+import { AiFillCheckSquare, AiFillEdit } from "react-icons/ai";
+import { BsFillTrash3Fill } from "react-icons/bs";
+import { TextInput } from "./TextInput";
 
 type Props = {
   task: Task;
 };
 
 export const TodoListItem = ({ task }: Props) => {
+  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState<Task>({
     task: "",
@@ -15,18 +20,15 @@ export const TodoListItem = ({ task }: Props) => {
     status: "todo",
   });
 
-  const dispatch = useDispatch();
-
   const handleDelete = (id: number) => {
     dispatch(removeTodo({ id }));
   };
 
-  const handleEdit = (id: number, event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleEdit = () => {
     if (editedTask) {
       dispatch(
         updateTodo({
-          id: id,
+          id: task.id,
           status: editedTask.status,
           task: editedTask.task,
         })
@@ -45,43 +47,48 @@ export const TodoListItem = ({ task }: Props) => {
     );
   };
 
+  const handleEditInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEditedTask({ ...editedTask, task: event.target.value });
+  };
+
+  const startEditing = () => {
+    setIsEditing(true);
+    setEditedTask(task);
+  };
+
   return (
-    <div>
+    <div className="task">
       {isEditing ? (
-        <div className="task">
-          <form onSubmit={(e) => handleEdit(task.id, e)}>
-            <input
-              type="text"
-              value={editedTask?.task}
-              onChange={(e) => setEditedTask({ ...task, task: e.target.value })}
-            />
-            <button type="submit">Save</button>
-          </form>
+        <div>
+          <TextInput value={editedTask.task} onChange={handleEditInput} />
+          <Button
+            onClick={handleEdit}
+            text="Save"
+            color="gray"
+            icon={<AiFillCheckSquare />}
+          />
         </div>
       ) : (
-        <div className="task">
+        <div>
           <input
             className="checkbox"
             type="checkbox"
-            onChange={() => {
-              handleCheckbox();
-            }}
-            value={task.status === "done" ? "checked" : ""}
-          ></input>
-          <li className={task.status}>{task.task}</li>
-          <div
-            className="delete"
-            onClick={() => {
-              setIsEditing(true);
-              setEditedTask(task);
-            }}
-          >
-            Edit
-          </div>
-
-          <div className="delete" onClick={() => handleDelete(task.id)}>
-            X
-          </div>
+            onChange={handleCheckbox}
+            checked={task.status === "done"}
+          />
+          <div className={task.status}>{task.task}</div>
+          <Button
+            onClick={startEditing}
+            text="Edit"
+            color="gray"
+            icon={<AiFillEdit />}
+          />
+          <Button
+            onClick={() => handleDelete(task.id)}
+            text="Delete"
+            color="gray"
+            icon={<BsFillTrash3Fill />}
+          />
         </div>
       )}
     </div>
