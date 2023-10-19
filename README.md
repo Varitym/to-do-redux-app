@@ -33,6 +33,6 @@ https://varitym.github.io/to-do-redux-app/
 
 ## Contact
 
-If you have any questions or suggestions, feel free to contact us at [your.email@example.com](mailto:mat.majgier@gmail.com).
+If you have any questions or suggestions, feel free to contact us at [mat.majgier@gmail.com](mailto:mat.majgier@gmail.com).
 
 Enjoy using the ToDo List application!
