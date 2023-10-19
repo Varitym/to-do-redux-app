@@ -5,10 +5,10 @@
   border-radius: 5px;
   width: 25vw;
   height: 5vh;
-  color: white;
+  color: $white;
   align-items: center;
   padding-left: 15px;
-  font-size: 18px;
+  font-size: 1.12rem;
   position: relative;
   @media screen and (max-width: 500px) {
     width: 50vw;

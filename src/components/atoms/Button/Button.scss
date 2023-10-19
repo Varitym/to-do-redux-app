@@ -5,17 +5,17 @@
   @include flex-center;
   border: none;
   border-radius: 4px;
-  color: #000;
+  color: $black;
   margin-left: 5px;
   cursor: pointer;
   background-color: transparent;
-  font-size: 30px;
-  width: 50px;
-  height: 50px;
+  font-size: 1.8rem;
+  width: 3.1rem;
+  height: 3.1rem;
   transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: #191919;
-    color: #fff;
+    background-color: $hover-color;
+    color: $white;
     &.success {
       background-color: transparent;
     }
@@ -33,6 +33,6 @@
     color: $success-color;
   }
   &.disabled {
-    color: gray;
+    color: $gray;
   }
 }

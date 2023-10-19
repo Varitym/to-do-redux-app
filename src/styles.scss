@@ -1,26 +1,28 @@
 @import "/src/styles/mixins.scss";
+@import "/src/styles/colors.scss";
 
 .App {
   @include flex-center;
   text-align: center;
   height: 100vh;
-  background-color: #5a5a6a;
+  background-color: $body-backgroud;
 }
 
 .App-header {
   @include flex-center();
-  font-size: calc(18px + 2vmin);
+  font-size: calc(1.1rem + 2vmin);
   color: white;
 }
 
 .Main-container {
   align-self: center;
-  background-color: #2c2c3e;
+  background-color: $container-background;
   height: 80vh;
-  padding-top: 10px;
+  padding-top: 0.62rem;
   width: 90vw;
-  border-radius: 20px;
-  overflow: scroll;
+  border-radius: 1.2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .task {
@@ -28,5 +30,5 @@
   flex-direction: row;
 }
 .delete {
-  margin-left: 10px;
+  margin-left: 0.52rem;
 }
