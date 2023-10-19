@@ -24,11 +24,11 @@ export const TodoListItem = ({ task }: Props) => {
     dispatch(removeTodo({ id }));
   };
 
-  const handleEdit = () => {
+  const handleEdit = (id: number) => {
     if (editedTask) {
       dispatch(
         updateTodo({
-          id: task.id,
+          id: id,
           status: editedTask.status,
           task: editedTask.task,
         })
@@ -48,44 +48,45 @@ export const TodoListItem = ({ task }: Props) => {
   };
 
   const handleEditInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEditedTask({ ...editedTask, task: event.target.value });
-  };
-
-  const startEditing = () => {
-    setIsEditing(true);
-    setEditedTask(task);
+    setEditedTask({ ...task, task: event.target.value });
   };
 
   return (
-    <div className="task">
+    <div>
       {isEditing ? (
-        <div>
-          <TextInput value={editedTask.task} onChange={handleEditInput} />
+        <div className="task">
+          <TextInput value={editedTask?.task} onChange={handleEditInput} />
           <Button
-            onClick={handleEdit}
-            text="Save"
+            onClick={() => handleEdit(task.id)}
+            text={"Save"}
             color="gray"
             icon={<AiFillCheckSquare />}
           />
         </div>
       ) : (
-        <div>
+        <div className="task">
           <input
             className="checkbox"
             type="checkbox"
-            onChange={handleCheckbox}
-            checked={task.status === "done"}
-          />
+            onChange={() => {
+              handleCheckbox();
+            }}
+            value={task.status === "done" ? "checked" : ""}
+          ></input>
           <div className={task.status}>{task.task}</div>
           <Button
-            onClick={startEditing}
-            text="Edit"
+            onClick={() => {
+              setIsEditing(true);
+              setEditedTask(task);
+            }}
+            text={"Edit"}
             color="gray"
             icon={<AiFillEdit />}
           />
+
           <Button
             onClick={() => handleDelete(task.id)}
-            text="Delete"
+            text={"Delete"}
             color="gray"
             icon={<BsFillTrash3Fill />}
           />
