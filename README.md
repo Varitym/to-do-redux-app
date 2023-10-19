@@ -18,7 +18,7 @@ https://varitym.github.io/to-do-redux-app/
 
    ```bash
    git clone https://github.com/Varitym/to-do-redux-app.git
-   cd todo-list-app
+   cd to-do-redux-app
    yarn
    yarn start
 
