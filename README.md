@@ -17,7 +17,7 @@ https://varitym.github.io/to-do-redux-app/
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/todo-list-app.git
+   git clone https://github.com/Varitym/to-do-redux-app.git
    cd todo-list-app
    yarn
    yarn start
