@@ -1,6 +1,6 @@
 import "./styles.scss";
-import { AddTask } from "./components/AddTask";
-import { TodoList } from "./components/TodoList";
+import { AddTask } from "./components/molecules/AddTask.tsx/AddTask";
+import { TodoList } from "./components/molecules/TodoList/TodoList";
 
 const App = () => {
   return (

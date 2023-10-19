@@ -1,65 +1,26 @@
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@mixin flex-row {
-  display: flex;
-  flex-direction: row;
-}
+@import "/src/styles/mixins.scss";
 
-.row {
-  @include flex-row;
-  @include flex-center;
-}
-
-.task {
-  width: 90%;
-  height: 5vh;
-  padding-left: 0.2em;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.2rem;
-  border-bottom: 1px solid gray;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.5em;
-  li {
-    list-style: none;
-    color: inherit;
-    text-decoration: line-through rgba(255, 255, 255, 0);
-    transition: color 1s, text-decoration-color 0.5s;
-    &.done {
-      text-decoration-color: black;
-    }
-    &.todo {
-      text-decoration-color: transparent;
-    }
-  }
-}
-.checkbox {
-  width: 25px;
-  height: 25px;
-  margin-right: 1em;
-}
 .App {
-  @include flex-center();
+  @include flex-center;
   text-align: center;
   height: 100vh;
+  background-color: #5a5a6a;
 }
 
 .App-header {
   @include flex-center();
-  font-size: calc(10px + 2vmin);
-  color: black;
+  font-size: calc(18px + 2vmin);
+  color: white;
 }
 
 .Main-container {
   align-self: center;
-  background-color: #eef1f2;
+  background-color: #2c2c3e;
   height: 80vh;
+  padding-top: 10px;
   width: 90vw;
   border-radius: 20px;
+  overflow: scroll;
 }
 
 .task {

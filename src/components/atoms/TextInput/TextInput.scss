@@ -1,0 +1,16 @@
+@import "/src/styles/colors.scss";
+.input {
+  background-color: $tertiary-color;
+  border: none;
+  border-radius: 5px;
+  width: 25vw;
+  height: 5vh;
+  color: white;
+  align-items: center;
+  padding-left: 15px;
+  font-size: 18px;
+  position: relative;
+  @media screen and (max-width: 500px) {
+    width: 50vw;
+  }
+}
