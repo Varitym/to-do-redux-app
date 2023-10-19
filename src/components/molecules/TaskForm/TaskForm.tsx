@@ -16,6 +16,7 @@ export const TaskForm = ({ onFormSubmit, defaultValue, icon }: Props) => {
     const data = new FormData(event.currentTarget);
     onFormSubmit(data.get("task") as string);
     event.currentTarget.reset();
+    setIsValid(false);
   };
   const isFormValid = (event: React.FormEvent<HTMLFormElement>) => {
     const data = new FormData(event.currentTarget);
